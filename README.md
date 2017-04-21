@@ -153,3 +153,19 @@ oPromiseDel.then(()=>{
 });
 
 ```
+
+### CUSTOM
+
+```js
+var User       = require('./user.js');
+
+User.customFind('SELECT * FROM user WHERE prenom = ?', 'john')
+    .then(( aUsers)=>{
+
+        aUsers.map((oUser)=>{
+          console.log( `custom -> Hi ! ${oUser.completeName}`);
+        })
+
+    });
+
+```
