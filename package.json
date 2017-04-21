@@ -1,0 +1,19 @@
+{
+  "name": "orm-mysql",
+  "version": "0.1.3",
+  "description": "ORM with Mysql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mysql",
+    "model",
+    "orm"
+  ],
+  "author": "Julien Jamet <jamet.julien@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "^2.13.0"
+  }
+}
