@@ -31,7 +31,8 @@ class User extends Model{
    * @return {[type]}       [description]
    */
   _treatBeforeInsert( oData){
-      oData.nom = oData.nom.strtolower();
+    oData.nom    = oData.nom.toLowerCase();
+    oData.prenom = oData.prenom.toLowerCase();
   }
 
   /**
@@ -55,7 +56,7 @@ var oPromise  = User.one("`id` = '2'");
 var oPromises = User.all();
 
 //ONE USER
-oUser.then(( oUser)=>{
+oPromise.then(( oUser)=>{
     // read
     console.log( oUser.nom, oUser.prenom, oUser.completeName);
 
@@ -68,9 +69,9 @@ oUser.then(( oUser)=>{
 });
 
 // ALL USERS
-oUsers.then( ( aUser)=>{
+oPromises.then( ( aUser)=>{
 
-    aUsers.map( (oUser)=>{
+    aUser.map( (oUser)=>{
       console.log( oUser.nom, oUser.prenom, oUser.completeName);
     })
 
@@ -99,15 +100,18 @@ To read One element
 
 ```js
 var User      = require('./user.js');
-var oPromise  = User.one(" `prenom` = 'john' ").then( ( oUser)=>{
+
+User.one(" `prenom` = 'john' ").then( ( oUser)=>{
   console.log( `Hi ! ${oUser.completeName}`);
 });
+
 ```
 
 To read Multi element
 ```js
 var User      = require('./user.js');
-var oPromise  = User.all().then( ( aUsers)=>{
+
+User.all().then( ( aUsers)=>{
 
     aUsers.map((oUser)=>{
       console.log( `Hi ! ${oUser.completeName}`);
@@ -122,11 +126,30 @@ var oPromise  = User.all().then( ( aUsers)=>{
 ```js
 var User      = require('./user.js');
 
-var oPromise  = User.one(" `prenom` = 'john' ")
-                    .then( ( oUser)=>{
-                      oUser.nom = "Doe";
-                      oUser.save().then((oUser)=>{
-                        console.log( `${oUser.completeName} updated`);
-                      });
-                    });
+User.one(" `prenom` = 'john' ")
+    .then( ( oUser)=>{
+      oUser.nom = "Doe";
+      oUser.save().then((oUser)=>{
+        console.log( `${oUser.completeName} updated`);
+      });
+    });
+```
+
+### DELETE
+
+```js
+var User       = require('./user.js');
+
+var oPromiseDel  = User.create({
+                                prenom : "alphonse",
+                                nom    : "dupond"
+                              })
+                      .then(( oUser)=>{
+                              return oUser.destroy();
+                            });
+
+oPromiseDel.then(()=>{
+  console.log('sup');
+});
+
 ```
