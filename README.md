@@ -93,6 +93,28 @@ var oPromise  = User.create({
 
 
 ```
+### Read
+
+To read One element
+
+```js
+var User      = require('./user.js');
+var oPromise  = User.one(" `prenom` = 'john' ").then( ( oUser)=>{
+  console.log( `Hi ! ${oUser.completeName}`);
+});
+```
+
+To read Multi element
+```js
+var User      = require('./user.js');
+var oPromise  = User.all().then( ( aUsers)=>{
+
+    aUsers.map((oUser)=>{
+      console.log( `Hi ! ${oUser.completeName}`);
+    })
+
+});
+```
 
 
 ### Update
@@ -100,7 +122,7 @@ var oPromise  = User.create({
 ```js
 var User      = require('./user.js');
 
-var oPromise  = User.one("`id` = '2'")
+var oPromise  = User.one(" `prenom` = 'john' ")
                     .then( ( oUser)=>{
                       oUser.nom = "Doe";
                       oUser.save().then((oUser)=>{
