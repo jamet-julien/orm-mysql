@@ -1,4 +1,8 @@
 
+Tiny ORM with Mysql to tiny project.
+
+[![NPM](https://nodei.co/npm/orm-mysql.png?compact=true)](https://nodei.co/npm/orm-mysql)
+
 
 ## Installation
 
