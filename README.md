@@ -1,4 +1,6 @@
 
+[![NPM](https://img.shields.io/npm/dt/orm-mysql.svg)](https://nodei.co/npm/orm-mysql)
+
 Tiny ORM with Mysql to tiny project.
 
 [![NPM](https://nodei.co/npm/orm-mysql.png?compact=true)](https://nodei.co/npm/orm-mysql)
@@ -25,8 +27,8 @@ class User extends Model{
    */
   constructor(){
     super();
-    this.table   = 'User';
-    this.referer = 'id';
+    this._table   = 'User';
+    this._referer = 'id';
   }
 
   /**
